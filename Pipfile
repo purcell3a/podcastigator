@@ -1,0 +1,42 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+flask-cors = "*"
+gradio = "*"
+ipykernel = "==6.28.0"
+matplotlib = "==3.8.3"
+numpy = "==1.26.3"
+ollama = "*"
+openai = "==1.6.1"
+pandas = "==2.2.1"
+psycopg2-binary = "==2.9.9"
+python-dotenv = "*"
+scikit-learn = "==1.4.1.post1"
+sentence-transformers = "==2.2.2"
+skl2onnx = "*"
+torch = "*"
+torchinfo = "==1.8.0"
+torchvision = "==0.16.2"
+umap-learn = "*"
+wandb = "*"
+xgboost = "==2.0.3"
+ipywidgets = "*"
+certifi = "*"
+graphviz = "*"
+seaborn = "*"
+pinecone = "*"
+pinecone-client = "*"
+datasets = "*"
+transformers = {extras = ["torch"], version = "*"}
+accelerate = "*"
+beautifulsoup4 = "*"
+h5py = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
