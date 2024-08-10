@@ -5,10 +5,13 @@ Podcastigator is a Python-based data processing pipeline that fetches, cleans, a
 ## How It Works
 
 ### `db_connection.py`
+
 - Provides two functions: `get_db_connection()` to establish and return a connection to the Neon PostgreSQL database, and `close_db_connection()` to close the connection.
 
 ### `seed_arxiv.py`
+
 - Imports the `get_db_connection` and `close_db_connection` functions from `db_connection.py`.
+
 - Uses the `ArXivService` class to fetch metadata from arXiv and insert it into the `arxiv_metadata` table in the database.
 
 ## Running the Code
@@ -19,9 +22,9 @@ Run the `seed_arxiv.py` file to connect to the database, create the table if it 
 python seed_arxiv.py
 ```
 
-## Project Structure 
+## Project Structure
 
-podcastigator/
+``` podcastigator/
 │
 ├── data_service/
 │   ├── database/
@@ -42,4 +45,4 @@ podcastigator/
 ├── load_env.py                     # Utility to load environment variables
 ├── Pipfile                         # Pipenv file for managing dependencies
 ├── Pipfile.lock                    # Pipenv lock file
-└── README.md                       # Project documentation
+└── README.md                       # Project documentation```
