@@ -1,16 +1,9 @@
-import re
-from typing import List
-
-import re
-from typing import List
 import requests
+from typing import List
 from bs4 import BeautifulSoup
 from requests import Response
 
-from data_service.whitepapers.arxiv.arXiv_category import ArXivCategory
-from data_service.whitepapers.arxiv.arXiv_metadata import ArXivMetadata
-from data_service.whitepapers.arxiv.white_paper_service import WhitePaperService
-
+from data_service.services.whitepapers.arxiv_models import ArXivCategory, ArXivMetadata, WhitePaperService
 
 class ArXivService(WhitePaperService):
     BASE_URL = "https://arxiv.org"
@@ -33,8 +26,9 @@ class ArXivService(WhitePaperService):
         html_content = self._fetch_html(self.CATEGORY_TAXONOMY_URL)
         return self._parse_categories_html(html_content)
 
-    def search_papers(self, query: str) -> List[ArXivMetadata]:
-        search_res = self._query_arxiv(query)
+    def search(self, query: str) -> List[ArXivMetadata]:
+        # Use the correct query format for ArXiv API
+        search_res = self._query_arxiv(f"search_query={query}")
         return self._parse_metadata_xml(search_res.text)
 
     def _build_pdf_url(self, paper_id: str) -> str:
@@ -56,6 +50,8 @@ class ArXivService(WhitePaperService):
             response = requests.get(url)
             response.raise_for_status()
             print(f"Successfully retrieved search results for '{query}'.")
+            print("Raw XML Response:")
+            print(response.text)  # Print the raw XML response for debugging
             return response
         except requests.exceptions.RequestException as e:
             raise Exception(f"Failed to retrieve search results: {e}")
@@ -71,9 +67,11 @@ class ArXivService(WhitePaperService):
 
     @staticmethod
     def _parse_metadata_xml(xml: str) -> List[ArXivMetadata]:
-        soup = BeautifulSoup(xml, "xml")
+        soup = BeautifulSoup(xml, "lxml")  # Ensure lxml is used for parsing XML
         entries = soup.find_all("entry")
         metadata = []
+
+        print(f"Parsing XML: Found {len(entries)} entries")  # Debugging output
 
         for entry in entries:
             metadata.append(ArXivMetadata(

@@ -35,6 +35,7 @@ transformers = {extras = ["torch"], version = "*"}
 accelerate = "*"
 beautifulsoup4 = "*"
 h5py = "*"
+lxml = "*"
 
 [dev-packages]
 

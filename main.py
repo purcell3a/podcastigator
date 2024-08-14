@@ -1,9 +1,15 @@
-from data_service.database.db_connection import get_db_connection, close_db_connection
+import logging
+from data_service.database.seed_arxiv import seed_arxiv_data
 
 def main():
-    print("Starting the arXiv database seeding process...")
-    seed_arxiv_data()
-    print("Seeding process completed.")
+    logging.basicConfig(level=logging.INFO)
+    logging.info("Starting the arXiv database seeding process...")
+
+    try:
+        seed_arxiv_data()
+        logging.info("Seeding process completed.")
+    except Exception as e:
+        logging.error(f"An error occurred during the seeding process: {e}")
 
 if __name__ == "__main__":
     main()

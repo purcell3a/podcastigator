@@ -6,7 +6,6 @@ load_env.initialize_environment()
 
 # Load the environment variable
 NEON_PG_CONNECTION_URL = load_env.load_environment_variable("NEON_PG_CONNECTION_URL")
-print(f"NEON_PG_CONNECTION_URL = {NEON_PG_CONNECTION_URL}")
 
 def get_db_connection():
     try:
