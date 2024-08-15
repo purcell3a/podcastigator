@@ -33,6 +33,7 @@ def generate_conversational_script_with_gpt(paper_metadata):
     script = response['choices'][0]['message']['content'].strip()
     return script
 
+
 def generate_podcast_script_for_paper(paper_id):
     # Fetch the paper metadata from the database
     paper_metadata = fetch_paper_metadata(paper_id)
@@ -40,7 +41,7 @@ def generate_podcast_script_for_paper(paper_id):
     if paper_metadata:
         # Generate the conversational script using OpenAI API
         script = generate_conversational_script_with_gpt(paper_metadata)
-        print("Generated Podcast Script:\n")
         print(script)
+        return script, None  # Return the script and no error
     else:
-        print(f"No paper found with ID: {paper_id}")
+        return None, f"No paper found with ID: {paper_id}"  # Return None and an error message

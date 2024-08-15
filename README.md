@@ -46,7 +46,10 @@ Podcastigator is a Python-based data processing pipeline that fetches, processes
 │   └── services/
 │       ├── scripts/
 │       │   ├── __init__.py
-│       │   └── chat_gpt.py         # Generates podcast scripts using OpenAI
+│       │   └── chat_gpt.py   
+│       ├── audio_gen/
+│       │   ├── __init__.py
+│       │   └── aws_poly.py        # Generates podcast scripts using OpenAI
 │       └── whitepapers/
 │           ├── __init__.py
 │           ├── arxiv.py            # Contains the ArXivService class for fetching and parsing arXiv data

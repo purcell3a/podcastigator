@@ -36,6 +36,9 @@ accelerate = "*"
 beautifulsoup4 = "*"
 h5py = "*"
 lxml = "*"
+boto3 = "*"
+pydub = "*"
+ffmpeg = "*"
 
 [dev-packages]
 
