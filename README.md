@@ -33,6 +33,7 @@ Podcastigator is a Python-based data processing pipeline that fetches, processes
 
 - Run `python main.py seed` command to connect to the database, create the table if it doesn’t exist, and seed it with data from arXiv
 - Run `python main.py generate {paper_id}` command to connect to the database, pull the white paper and send the data to chatGPT to generate the script
+- Run `python main.py audio {paper_id}` to generate the podcast for the chosen paper
 
 
 
